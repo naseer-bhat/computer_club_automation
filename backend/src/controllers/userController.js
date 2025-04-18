@@ -21,6 +21,15 @@ export const getUserById = async (req, res) => {
   }
 };
 export const createUser = async (req, res) => {
+  if (Array.isArray(req.body)) {
+    const users = req.body.map((user) => new User(user));
+    try {
+      const savedUsers = await User.insertMany(users);
+      return res.status(201).json(savedUsers);
+    } catch (error) {
+      return res.status(400).json({ message: error.message });
+    } 
+  }
   const { name, username, email, password, phone, role } = req.body;
   const newUser = new User({ name, username, email, password, phone, role });
   try {
