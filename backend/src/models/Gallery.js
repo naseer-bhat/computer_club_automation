@@ -1,5 +1,5 @@
-import { schema, model } from "mongoose";
-const GallerySchema = new schema({
+import { Schema, model } from "mongoose";
+const GallerySchema = new Schema({
   title: { type: String, required: true },
   imageUrl: { type: String, required: true },
   eventID: { type: schema.Types.ObjectId, ref: "Event", required: true },
