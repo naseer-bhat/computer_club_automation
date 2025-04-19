@@ -1,4 +1,4 @@
-import { User } from "../models/User.js"; // Ensure .js extension if using ES modules
+import { User } from "../models/User.js";
 import jwt from "jsonwebtoken";
 import { hashPassword, verifyPassword } from "../utils/passwordUtils.js";
 
@@ -35,7 +35,6 @@ export const register = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
 export const login = async (req, res) => {
   const { username, password } = req.body;
 
