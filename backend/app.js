@@ -10,7 +10,8 @@ const dbUrl = process.env.DBURI;
 connectDB(dbUrl);
 app.use(cors());
 app.use(express.json());
-
+import authRoute from "./src/routes/authRoutes.js";
+app.use("/api", authRoute);
 import userRoute from "./src/routes/userRoute.js";
 app.use("/api", userRoute);
 app.listen(PORT, () => {
