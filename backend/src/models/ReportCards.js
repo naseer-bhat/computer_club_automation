@@ -2,7 +2,7 @@ import { Schema,model } from "mongoose";
 const ReportCardSchema = new Schema({
   userId: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: "Participant",
     required: true,
   },
   eventId: { type: Schema.Types.ObjectId, ref: "Event", required: true },

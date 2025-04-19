@@ -2,7 +2,6 @@ import { Schema, model } from "mongoose";
 const GallerySchema = new Schema({
   title: { type: String, required: true },
   imageUrl: { type: String, required: true },
-  eventID: { type: schema.Types.ObjectId, ref: "Event", required: true },
-  dateCreated: { type: Date, default: Date.now },
+  eventId: { type: Schema.Types.ObjectId, ref: "Event", required: true },
 });
 export const Gallery = model("Gallery", GallerySchema);
