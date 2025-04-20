@@ -6,14 +6,14 @@ import {
   createReport,
   updateReport,
   deleteReport,
-  getReportCardByEventId,
-  getReportCardByUserId,
+  getReportByEventId,
+  getReportByUserId,
 } from "../controllers/reportController.js";
 router.get("/allreports", getReports);
 router.get("/report/:id", getReportById);
 router.post("/report", createReport);
 router.put("/report/:id", updateReport);
 router.delete("/report/:id", deleteReport);
-router.get("/report/user/:userId", getReportCardByUserId);
-router.get("/report/event/:eventId", getReportCardByEventId);
+router.get("/report/user/:userId", getReportByUserId);
+router.get("/report/event/:eventId", getReportByEventId);
 export default router;

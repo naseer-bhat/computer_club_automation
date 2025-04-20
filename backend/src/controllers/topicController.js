@@ -1,5 +1,5 @@
-import { Topic } from "../models/Topics";
-import { Event } from "../models/Events";
+import { Topic } from "../models/Topics.js";
+import { Event } from "../models/Events.js";
 export const getTopics = async (req, res) => {
   try {
     const topics = await Topic.find();

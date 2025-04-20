@@ -6,3 +6,4 @@ router.get("/certificate/:id", getCertificateById);
 router.post("/certificate", createCertificate);
 router.put("/certificate/:id", updateCertificate);
 router.delete("/certificate/:id", deleteCertificate);
+export default router;

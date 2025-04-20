@@ -1,8 +1,8 @@
 import { ReportCard } from "../models/ReportCards.js";
 import { Event } from "../models/Events.js";
-import { Participant } from "../models/Participants.js";
+import { Participant } from "../models/ParticipationRequests.js";
 
-export const createReportCard = async (req, res) => {
+export const createReport = async (req, res) => {
   try {
     const { userId, eventId, score, remarks } = req.body;
 
@@ -34,7 +34,7 @@ export const createReportCard = async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 };
-export const getReportCard = async (req, res) => {
+export const getReports = async (req, res) => {
   try {
     const reports = await ReportCard.find();
     if (!reports) {
@@ -46,7 +46,7 @@ export const getReportCard = async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 };
-export const getReportCardById = async (req, res) => {
+export const getReportById = async (req, res) => {
   try {
     const { id } = req.params;
     const reportCard = await ReportCard.findById(id);
@@ -59,7 +59,7 @@ export const getReportCardById = async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 };
-export const updateReportCard = async (req, res) => {
+export const updateReport = async (req, res) => {
   try {
     const { id } = req.params;
     const { score, remarks } = req.body;
@@ -80,7 +80,7 @@ export const updateReportCard = async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 };
-export const deleteReportCard = async (req, res) => {
+export const deleteReport = async (req, res) => {
   try {
     const { id } = req.params;
     const deletedReportCard = await ReportCard.findByIdAndDelete(id);
@@ -95,7 +95,7 @@ export const deleteReportCard = async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 };
-export const getReportCardByUserId = async (req, res) => {
+export const getReportByUserId = async (req, res) => {
   try {
     const { userId } = req.params;
     const reportCards = await ReportCard.find({ userId });
@@ -108,7 +108,7 @@ export const getReportCardByUserId = async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 };
-export const getReportCardByEventId = async (req, res) => {
+export const getReportByEventId = async (req, res) => {
   try {
     const { eventId } = req.params;
     const reportCards = await ReportCard.find({ eventId });

@@ -14,7 +14,7 @@ const ParticipationSchema = new Schema({
     default: "pending",
   },
 });
-export const ParticipationRequest = model(
-  "ParticipationRequest",
+export const Participant = model(
+  "Participant",
   ParticipationSchema
 );

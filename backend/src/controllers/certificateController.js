@@ -1,8 +1,8 @@
 import { User } from "../models/User.js";
-import { Certificate } from "../models/Certificate.js";
-import { Event } from "../models/Event.js";
-import { Topic } from "../models/Topic.js";
-export const getCertificates = async (req, res) => {
+import { Certificate } from "../models/Certificates.js";
+import { Event } from "../models/Events.js";
+import { Topic } from "../models/Topics.js";
+export const getAllCertificates = async (req, res) => {
   try {
     const certificates = await Certificate.find()
       .populate("eventID", "title")

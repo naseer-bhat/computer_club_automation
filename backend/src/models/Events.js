@@ -10,4 +10,4 @@ const EventSchema = new Schema({
     default: "upcoming",
   },
 });
-export const Event = model("Event", EventSchema);
+export const Event = model("Event",EventSchema);

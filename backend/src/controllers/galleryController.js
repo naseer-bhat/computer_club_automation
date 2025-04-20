@@ -1,5 +1,5 @@
 import { Gallery } from "../models/Gallery.js";
-import { Event } from "../models/Event.js";
+import { Event } from "../models/Events.js";
 export const getGallery = async (req, res) => {
   try {
     const gallery = await Gallery.find();
