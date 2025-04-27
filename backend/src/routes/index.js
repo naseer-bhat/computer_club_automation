@@ -1,19 +1,25 @@
+import { Router } from "express";
+import authenticateToken from "../middlewares/authenticateToken.js";
+import authorizeRoles from "../middlewares/authorizeRoles.js";
+
 import authRoutes from "./authRoutes.js";
 import userRoutes from "./userRoute.js";
 import certificateRoutes from "./certificateRoutes.js";
 import eventRoutes from "./eventRoutes.js";
-import galeryRoutes from "./galleryRoute.js";
+import galleryRoutes from "./galleryRoute.js";
 import registrationRoutes from "./registrationRoutes.js";
 import reportRoutes from "./reportRoutes.js";
 import topicRoutes from "./topicRoutes.js";
-import { Router } from "express";
+
 const router = Router();
 router.use("/auth", authRoutes);
-router.use("/user", userRoutes);
-router.use("/certificate", certificateRoutes);
-router.use("/event", eventRoutes);
-router.use("/galery", galeryRoutes);  
-router.use("/registration", registrationRoutes);
-router.use("/report", reportRoutes);
+router.use(authenticateToken);
+router.use("/user", authorizeRoles('admin', 'user'), userRoutes);
+router.use("/certificate", authorizeRoles('admin','user'), certificateRoutes);
+router.use("/event", authorizeRoles('admin', 'user'), eventRoutes);
+router.use("/gallery", galleryRoutes); 
+router.use("/registration", registrationRoutes); 
+router.use("/report", authorizeRoles('admin'), reportRoutes);
 router.use("/topic", topicRoutes);
+
 export default router;

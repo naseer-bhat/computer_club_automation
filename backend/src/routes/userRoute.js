@@ -1,9 +1,11 @@
 import { Router } from "express";
+// import authenticateToken from "../middlewares/authenticateToken.js";
+import authorizeRoles from "../middlewares/authorizeRoles.js";
 import { getUsers ,getUserById,createUser,updateUser,deleteUser} from "../controllers/userController.js";
 const router = Router();
-router.get("/allusers", getUsers);
+router.get("/allusers",authorizeRoles('admin'), getUsers);
 router.get("/user/:id", getUserById);
 router.post("/user", createUser);  
-router.put("/user/:id", updateUser);
-router.delete("/user/:id", deleteUser);
+router.put("/user/:id",authorizeRoles('admin'), updateUser);
+router.delete("/user/:id",authorizeRoles('admin'), deleteUser);
 export default router;
