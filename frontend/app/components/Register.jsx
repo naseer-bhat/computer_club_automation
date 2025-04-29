@@ -24,7 +24,7 @@ export default function Register() {
     e.preventDefault(); // Prevent default form submission
 
     try {
-      const response = await fetch("http://localhost:3001/api/register", {
+      const response = await fetch("http://localhost:3001/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
