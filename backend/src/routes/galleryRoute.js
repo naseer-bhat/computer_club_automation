@@ -11,9 +11,9 @@ import {
 } from "../controllers/galleryController.js";
 
 router.get("/allgalleries", getGallery);
-router.get("/gallery/:id", getGalleryById);
-router.post("/gallery",authorizeRoles('admin'), createGallery);
-router.put("/gallery/:id",authorizeRoles('admin'), updateGallery);
-router.delete("/gallery/:id",authorizeRoles('admin'), deleteGallery);
+router.get("/gallerybyid/:id", getGalleryById);
+router.post("/addgallery",authorizeRoles('admin'), createGallery);
+router.put("/updategallery/:id",authorizeRoles('admin'), updateGallery);
+router.delete("/deletegallery/:id",authorizeRoles('admin'), deleteGallery);
 router.get("/gallery/event/:eventId", getGalleryByEventId);
 export default router;

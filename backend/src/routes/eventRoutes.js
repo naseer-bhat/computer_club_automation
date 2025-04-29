@@ -1,9 +1,10 @@
 import { Router } from "express";
 const router = Router();
+import authorizeRoles from "../middlewares/authorizeRoles.js";
 import { getEvents, getEventById, createEvent, updateEvent, deleteEvent } from "../controllers/eventController.js";   
 router.get("/allevents", getEvents);
-router.get("/event/:id", getEventById); 
-router.post("/event", createEvent);
-router.put("/event/:id", updateEvent);  
-router.delete("/event/:id", deleteEvent);
+router.get("/eventbyid/:id", getEventById); 
+router.post("/addevent", authorizeRoles('admin'), createEvent);
+router.put("/updateevent/:id" , authorizeRoles('admin'), updateEvent);  
+router.delete("/deleteevent/:id", authorizeRoles('admin'), deleteEvent);
 export default router;
