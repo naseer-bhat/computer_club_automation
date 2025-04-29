@@ -1,9 +1,10 @@
 import { Router } from "express";
+import authorizeRoles from "../middlewares/authorizeRoles.js";
 import { getAllCertificates, getCertificateById, createCertificate, updateCertificate, deleteCertificate } from "../controllers/certificateController.js";
 const router = Router();
-router.get("/allcertificates", getAllCertificates);
+router.get("/allcertificates",authorizeRoles('admin'), getAllCertificates);
 router.get("/certificate/:id", getCertificateById);
-router.post("/certificate", createCertificate);
-router.put("/certificate/:id", updateCertificate);
-router.delete("/certificate/:id", deleteCertificate);
+router.post("/certificate",authorizeRoles('admin'), createCertificate);
+router.put("/certificate/:id",authorizeRoles('admin'), updateCertificate);
+router.delete("/certificate/:id", authorizeRoles('admin'),deleteCertificate);
 export default router;
