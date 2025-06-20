@@ -13,7 +13,7 @@ import topicRoutes from "./topicRoutes.js";
 import welcomeRoute from "./welcomeRoute.js"
 
 const router = Router();
-router.use("/geneal",welcomeRoute)
+router.use("/general",welcomeRoute)
 router.use("/auth", authRoutes);
 router.use(authenticateToken);
 router.use("/user", authorizeRoles('admin', 'participant'), userRoutes);
