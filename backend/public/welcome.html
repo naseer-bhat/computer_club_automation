@@ -37,141 +37,109 @@
     ul {
       padding-left: 1.5rem;
     }
-    code {
-      background-color: #efefef;
-      padding: 0.2rem 0.4rem;
+    .route-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.3rem 0;
+    }
+    .route-link {
+      flex: 1;
+    }
+    button.copy-btn {
+      background-color: #007acc;
+      color: white;
+      border: none;
+      padding: 0.3rem 0.7rem;
       border-radius: 4px;
-      font-size: 0.95rem;
+      cursor: pointer;
+      margin-left: 10px;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 0.75rem;
-      text-align: left;
-    }
-    th {
-      background-color: #f0f0f0;
+    button.copy-btn:hover {
+      background-color: #005f99;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>👨‍💻 Computer Club Automation</h1>
-    
-    <div class="card">
-      <h2>📌 Project Overview</h2>
-      <p>
-        <strong>Computer Club Automation</strong> is a backend system that streamlines the daily operations of a university’s Computer Club. It facilitates tasks like student/member registration, event organization, and user role management with secure authentication. The goal is to minimize paperwork, reduce errors, and improve operational efficiency through automation.
-      </p>
-      <p>
-        This RESTful API can be integrated with a frontend or used independently through tools like Postman for testing and demonstration.
-      </p>
-    </div>
 
     <div class="card">
-      <h2>🧰 Technologies & Their Purpose</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Technology</th>
-            <th>Purpose</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Node.js</strong></td>
-            <td>JavaScript runtime for building fast, scalable backend services.</td>
-          </tr>
-          <tr>
-            <td><strong>Express.js</strong></td>
-            <td>Framework used to create the REST API routes and manage middleware.</td>
-          </tr>
-          <tr>
-            <td><strong>MongoDB</strong></td>
-            <td>NoSQL database used for storing users, members, and events data.</td>
-          </tr>
-          <tr>
-            <td><strong>Mongoose</strong></td>
-            <td>ODM (Object Data Modeling) library for MongoDB, used to define schemas and models.</td>
-          </tr>
-          <tr>
-            <td><strong>Argon2</strong></td>
-            <td>Secure password hashing algorithm used for protecting user credentials.</td>
-          </tr>
-          <tr>
-            <td><strong>JWT (JSON Web Token)</strong></td>
-            <td>Token-based authentication for managing secure sessions and roles.</td>
-          </tr>
-          <tr>
-            <td><strong>Nodemailer</strong></td>
-            <td>Used to send confirmation or notification emails (if implemented).</td>
-          </tr>
-          <tr>
-            <td><strong>CORS</strong></td>
-            <td>Middleware for enabling cross-origin requests from frontend clients.</td>
-          </tr>
-          <tr>
-            <td><strong>dotenv</strong></td>
-            <td>Loads environment variables from a .env file into <code>process.env</code>.</td>
-          </tr>
-          <tr>
-            <td><strong>Render</strong></td>
-            <td>Platform for deploying and hosting the backend API publicly.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      <h2>🔗 API Routes</h2>
 
-    <div class="card">
-      <h2>🌐 Base API URL</h2>
-      <p>
-        <a href="https://computer-club-automation-backend.onrender.com" target="_blank">
-          https://computer-club-automation-backend.onrender.com
-        </a>
-      </p>
-    </div>
-
-    <div class="card">
-      <h2>📚 Available API Routes</h2>
-      
-      <h3>🔸 Users</h3>
-      <ul>
-        <li><a href="https://computer-club-automation-backend.onrender.com/api/users" target="_blank">GET /api/users</a> – Get all users</li>
-        <li>POST /api/users – Register new user</li>
-        <li>PUT /api/users/:id – Update user by ID</li>
-        <li>DELETE /api/users/:id – Delete user by ID</li>
-      </ul>
-
-      <h3>🔸 Authentication</h3>
-      <ul>
-        <li>POST /api/auth/login – Login</li>
-        <li>POST /api/auth/register – Register</li>
-      </ul>
-
-      <h3>🔸 Events</h3>
-      <ul>
-        <li><a href="https://computer-club-automation-backend.onrender.com/api/events" target="_blank">GET /api/events</a> – List all events</li>
-        <li>POST /api/events – Create event</li>
-        <li>PUT /api/events/:id – Update event</li>
-        <li>DELETE /api/events/:id – Delete event</li>
-      </ul>
-
-      <h3>🔸 Members</h3>
-      <ul>
-        <li><a href="https://computer-club-automation-backend.onrender.com/api/members" target="_blank">GET /api/members</a> – Get all members</li>
-        <li>POST /api/members – Add new member</li>
-        <li>PUT /api/members/:id – Update member</li>
-        <li>DELETE /api/members/:id – Delete member</li>
-      </ul>
+      <div id="routes"></div>
     </div>
 
     <footer style="text-align: center; margin-top: 3rem; font-style: italic; color: #888;">
       Built with ❤️ by the Computer Club @ IUST | © 2025
     </footer>
   </div>
+
+  <script>
+    const routes = [
+      { label: 'Auth - Register', url: 'https://computer-club-automation-backend.onrender.com/api/auth/register/' },
+      { label: 'Auth - Login', url: 'https://computer-club-automation-backend.onrender.com/api/auth/login/' },
+      { label: 'User - All Users (Admin)', url: 'https://computer-club-automation-backend.onrender.com/api/user/allusers' },
+      { label: 'User - Add User', url: 'https://computer-club-automation-backend.onrender.com/api/user/adduser' },
+      { label: 'User - Get User by ID', url: 'https://computer-club-automation-backend.onrender.com/api/user/userbyid/:id' },
+      { label: 'User - Update User', url: 'https://computer-club-automation-backend.onrender.com/api/user/updateuser/:id' },
+      { label: 'User - Delete User', url: 'https://computer-club-automation-backend.onrender.com/api/user/deleteuser/:id' },
+      { label: 'Certificate - All (Admin)', url: 'https://computer-club-automation-backend.onrender.com/api/certificate/allcertificates/' },
+      { label: 'Certificate - Add (Admin)', url: 'https://computer-club-automation-backend.onrender.com/api/certificate/addcertificate' },
+      { label: 'Certificate - Update (Admin)', url: 'https://computer-club-automation-backend.onrender.com/api/certificate/updatecertificate/:id' },
+      { label: 'Certificate - Delete (Admin)', url: 'https://computer-club-automation-backend.onrender.com/api/certificate/deletecertificate/:id' },
+      { label: 'Certificate - Get by ID', url: 'https://computer-club-automation-backend.onrender.com/api/certificate/certificatebyid/:id' },
+      { label: 'Event - Add (Admin)', url: 'https://computer-club-automation-backend.onrender.com/api/event/addevent/' },
+      { label: 'Event - Update (Admin)', url: 'https://computer-club-automation-backend.onrender.com/api/event/updateevent/:id' },
+      { label: 'Event - Delete (Admin)', url: 'https://computer-club-automation-backend.onrender.com/api/event/deleteevent/:id' },
+      { label: 'Event - All Events', url: 'https://computer-club-automation-backend.onrender.com/api/event/allevents' },
+      { label: 'Event - Get by ID', url: 'https://computer-club-automation-backend.onrender.com/api/event/eventbyid/:id' },
+      { label: 'Gallery - Add (Admin)', url: 'https://computer-club-automation-backend.onrender.com/api/gallary/addgallery' },
+      { label: 'Gallery - Update (Admin)', url: 'https://computer-club-automation-backend.onrender.com/api/gallary/updategallery/:id' },
+      { label: 'Gallery - Delete (Admin)', url: 'https://computer-club-automation-backend.onrender.com/api/gallary/deletegallery/:id' },
+      { label: 'Gallery - All', url: 'https://computer-club-automation-backend.onrender.com/api/gallary/allgalleries' },
+      { label: 'Gallery - Get by ID', url: 'https://computer-club-automation-backend.onrender.com/api/gallary/gallerybyid/:id' },
+      { label: 'Gallery - By Event', url: 'https://computer-club-automation-backend.onrender.com/api/gallery/event/:eventId' },
+      { label: 'Registration - All (Admin)', url: 'https://computer-club-automation-backend.onrender.com/api/registration/allregistrations/' },
+      { label: 'Registration - Update (Admin)', url: 'https://computer-club-automation-backend.onrender.com/api/registration/updateregistration/:id' },
+      { label: 'Registration - Delete (Admin)', url: 'https://computer-club-automation-backend.onrender.com/api/registration/deleteregistration/:id' },
+      { label: 'Registration - Get by ID', url: 'https://computer-club-automation-backend.onrender.com/api/registration/registrationbyid/:id' },
+      { label: 'Registration - Add', url: 'https://computer-club-automation-backend.onrender.com/api/registration/addregistration' },
+      { label: 'Report - All (Admin)', url: 'https://computer-club-automation-backend.onrender.com/api/report/allreports' },
+      { label: 'Report - Get by ID (Admin)', url: 'https://computer-club-automation-backend.onrender.com/api/report/reportbyid/:id' },
+      { label: 'Report - Add', url: 'https://computer-club-automation-backend.onrender.com/api/report/addreport' },
+      { label: 'Report - Update', url: 'https://computer-club-automation-backend.onrender.com/api/report/updatereport/:id' },
+      { label: 'Report - Delete', url: 'https://computer-club-automation-backend.onrender.com/api/report/deletereport/:id' },
+      { label: 'Report - Get by User ID', url: 'https://computer-club-automation-backend.onrender.com/api/report/getreport/user/:userId' },
+      { label: 'Report - Get by Event ID', url: 'https://computer-club-automation-backend.onrender.com/api/report/getreport/event/:eventId' },
+      { label: 'Topic - Add (Admin)', url: 'https://computer-club-automation-backend.onrender.com/api/topic/addtopic' },
+      { label: 'Topic - Update (Admin)', url: 'https://computer-club-automation-backend.onrender.com/api/topic/updatetopic/:id' },
+      { label: 'Topic - Delete (Admin)', url: 'https://computer-club-automation-backend.onrender.com/api/topic/deletetopic/:id' },
+      { label: 'Topic - All', url: 'https://computer-club-automation-backend.onrender.com/api/topic/alltopics' },
+      { label: 'Topic - Get by ID', url: 'https://computer-club-automation-backend.onrender.com/api/topic/topicbyid/:id' }
+    ];
+
+    const routesContainer = document.getElementById('routes');
+
+    routes.forEach(({ label, url }) => {
+      const div = document.createElement('div');
+      div.className = 'route-item';
+
+      const link = document.createElement('a');
+      link.href = url;
+      link.textContent = label;
+      link.className = 'route-link';
+      link.target = '_blank';
+
+      const btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.textContent = 'Copy';
+      btn.onclick = () => navigator.clipboard.writeText(url);
+
+      div.appendChild(link);
+      div.appendChild(btn);
+      routesContainer.appendChild(div);
+    });
+  </script>
 </body>
 </html>

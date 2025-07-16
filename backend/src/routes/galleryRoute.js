@@ -15,5 +15,5 @@ router.get("/gallerybyid/:id", getGalleryById);
 router.post("/addgallery",authorizeRoles('admin'), createGallery);
 router.put("/updategallery/:id",authorizeRoles('admin'), updateGallery);
 router.delete("/deletegallery/:id",authorizeRoles('admin'), deleteGallery);
-router.get("/gallery/event/:eventId", getGalleryByEventId);
+router.get("/event/:eventId", getGalleryByEventId);
 export default router;

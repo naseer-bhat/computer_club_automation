@@ -6,13 +6,11 @@ export const createReport = async (req, res) => {
   try {
     const { userId, eventId, score, remarks } = req.body;
 
-    // Check if the event exists
     const event = await Event.findById(eventId);
     if (!event) {
       return res.status(404).json({ message: "Event not found" });
     }
 
-    // Optional: Check if participant exists
     const participant = await Participant.findOne({ userId, eventId });
     if (!participant) {
       return res
@@ -20,7 +18,6 @@ export const createReport = async (req, res) => {
         .json({ message: "User is not a participant in this event" });
     }
 
-    // Create report card
     const newReport = await ReportCard.create({
       userId,
       eventId,
