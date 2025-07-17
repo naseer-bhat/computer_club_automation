@@ -20,13 +20,13 @@ export const getRegistrationById = async (req, res) => {
   }
 }
 export const createRegistration = async (req, res) => {
-  const { eventID, userID } = req.body;
+  const { eventId, userId,topicId } = req.body;
   try {
-    const event = await Event.findById(eventID);
+    const event = await Event.findById(eventId);
     if (!event) return res.status(404).json({ message: "Event not found" });
-    const user = await User.findById(userID);
+    const user = await User.findById(userId);
     if (!user) return res.status(404).json({ message: "User not found" });  
-    const newRegistration = new Participant({ eventID, userID });
+    const newRegistration = new Participant({ eventId, userId,topicId });
     await newRegistration.save();
     res.status(201).json(newRegistration);
   }

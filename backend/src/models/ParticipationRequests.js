@@ -7,7 +7,7 @@ const ParticipationSchema = new Schema({
   },
 
   eventId: { type: Schema.Types.ObjectId, ref: "Event", required: true },
-  topocId: { type: Schema.Types.ObjectId, ref: "Topic", required: true },
+  topicId: { type: Schema.Types.ObjectId, ref: "Topic", required: true },
   status: {
     type: String,
     enum: ["pending", "approved", "rejected"],
